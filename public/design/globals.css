@@ -1,0 +1,41 @@
+html {
+  background-color: #1f1e1d;
+  color: #f7f7f7;
+}
+
+a {
+  color: #f2960e;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.container-sm {
+  max-width: 32rem;
+}
+
+.container-md {
+  max-width: 48rem;
+}
+
+.container-lg {
+  max-width: 64rem;
+}
+
+.container-xl {
+  max-width: 80rem;
+}
