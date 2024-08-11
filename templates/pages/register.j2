@@ -1,0 +1,20 @@
+{% extends "layouts/public.j2" %}
+
+{% block title %}Register{% endblock title %}
+
+{% block content %}
+<img src="/static/assets/logo.png" alt="Passenger Logo" class="logo" width="128" height="128">
+
+<h1>Create Your Vault</h1>
+
+<form class="container-sm">
+  <input type="text" name="username" placeholder="Username">
+  <input type="password" name="passphrase" placeholder="Passphrase">
+
+  <button type="submit">Create Vault</button>
+</form>
+
+<p>
+  Already have a vault? <a href="/login">Unlock it!</a>
+</p>
+{% endblock content %}
