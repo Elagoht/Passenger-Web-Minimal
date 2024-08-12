@@ -11,7 +11,7 @@ app = Flask(__name__)
 def login(): return minify_html(render_template("pages/login.j2"))
 
 
-@ app.route('/register')
+@app.route('/register')
 def register(): return minify_html(render_template("pages/register.j2"))
 
 
