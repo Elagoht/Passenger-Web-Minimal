@@ -4,3 +4,6 @@ venv/
 
 # static files
 static/
+
+# node.js
+node_modules/
