@@ -29,6 +29,7 @@ button {
   border: 1px solid var(--tuatara-200);
   background-color: var(--tuatara-50);
   color: var(--tuatara-950);
+  cursor: pointer;
 }
 
 button.primary {
