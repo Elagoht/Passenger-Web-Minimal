@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 from utilities.prepare import prepare_static_files
 from utilities.minimize import minify_html
 from utilities.authorization import public_page, private_page
@@ -6,6 +6,12 @@ from utilities.authorization import public_page, private_page
 prepare_static_files()
 
 app = Flask(__name__)
+
+
+@app.route("/")
+@public_page
+@private_page
+def index(): pass
 
 
 @app.route("/login")
