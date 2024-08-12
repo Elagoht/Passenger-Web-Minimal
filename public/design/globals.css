@@ -1,6 +1,7 @@
 html {
-  background-color: #1f1e1d;
-  color: #f7f7f7;
+  background-color: var(--tuatara-100);
+  color: var(--tuatara-1000);
+  font-family: sans-serif;
 }
 
 a {
@@ -12,6 +13,32 @@ form {
   flex-direction: column;
   gap: 1rem;
   width: 100%;
+}
+
+input {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--tuatara-200);
+  background-color: var(--tuatara-50);
+  color: var(--tuatara-950);
+}
+
+button {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--tuatara-200);
+  background-color: var(--tuatara-50);
+  color: var(--tuatara-950);
+}
+
+button.primary {
+  background-color: var(--creamcan-500);
+  color: var(--tuatara-50);
+}
+
+button.secondary {
+  background-color: var(--tuatara-50);
+  color: var(--tuatara-950);
 }
 
 .container-sm,
@@ -38,4 +65,65 @@ form {
 
 .container-xl {
   max-width: 80rem;
+}
+
+/**
+ * Dark Mode
+ */
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: var(--tuatara-1000);
+    color: var(--tuatara-50);
+  }
+
+  input {
+    background-color: var(--tuatara-950);
+    border: 1px solid var(--tuatara-900);
+    color: var(--tuatara-50);
+  }
+
+  button {
+    background-color: var(--tuatara-950);
+    border: 1px solid var(--tuatara-900);
+    color: var(--tuatara-50);
+  }
+}
+
+:root {
+  --tuatara-50: #f7f7f7;
+  --tuatara-100: #eaeaea;
+  --tuatara-200: #c7c7c7;
+  --tuatara-300: #b1b0af;
+  --tuatara-400: #898887;
+  --tuatara-500: #6e6d6c;
+  --tuatara-600: #5e5d5c;
+  --tuatara-700: #504f4e;
+  --tuatara-800: #464644;
+  --tuatara-900: #373736;
+  --tuatara-950: #2b2a29;
+  --tuatara-1000: #1f1e1d;
+
+  --leaf-50: #f2f7f3;
+  --leaf-100: #e0ebe1;
+  --leaf-200: #b1cdb7;
+  --leaf-300: #99bca3;
+  --leaf-400: #6d9a7b;
+  --leaf-500: #4c7d5d;
+  --leaf-600: #396248;
+  --leaf-700: #2d4f3a;
+  --leaf-800: #263f30;
+  --leaf-900: #203428;
+  --leaf-950: #111d16;
+
+  --creamcan-50: #fffaeb;
+  --creamcan-100: #fdf1c8;
+  --creamcan-200: #fce28b;
+  --creamcan-300: #face54;
+  --creamcan-400: #f8b827;
+  --creamcan-500: #f2960e;
+  --creamcan-600: #d67109;
+  --creamcan-700: #b24e0b;
+  --creamcan-800: #903c10;
+  --creamcan-900: #773210;
+  --creamcan-950: #441804;
 }
