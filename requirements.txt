@@ -10,5 +10,7 @@ MarkupSafe==2.1.5
 ply==3.11
 requests==2.32.3
 rjsmin==1.2.2
+tornado==6.4.1
 urllib3==2.2.2
+watchdog==4.0.2
 Werkzeug==3.0.3
