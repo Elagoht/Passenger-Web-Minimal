@@ -5,7 +5,7 @@ from flask import request, redirect
 def public_page(function):
     @wraps(function)
     def decorated_function(*args, **kwargs):
-        if "accessToken" in request.cookies:
+        if request.cookies.get("accessToken"):
             return redirect("/dashboard")
         return function(*args, **kwargs)
     return decorated_function
@@ -14,7 +14,7 @@ def public_page(function):
 def private_page(function):
     @wraps(function)
     def decorated_function(*args, **kwargs):
-        if "accessToken" not in request.cookies:
+        if not request.cookies.get("accessToken"):
             return redirect("/login")
         return function(*args, **kwargs)
     return decorated_function

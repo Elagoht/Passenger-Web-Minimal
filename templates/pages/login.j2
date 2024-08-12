@@ -3,14 +3,7 @@
 {% set title = "Login" %}
 
 {% block head %}
-<script type="module">
-  import loginFormAction from '/static/forms/login.js';
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.forms[0];
-    form.addEventListener('submit', loginFormAction);
-  });
-</script>
+<script src="/static/forms/login.js" type="module"></script>
 {% endblock head %}
 
 {% block content %}
@@ -18,7 +11,7 @@
 
 <h1>Unlock Your Vault</h1>
 
-<form class="container-sm">
+<form class="container-sm" onsubmit="loginFormAction(event)">
   <input type="text" name="username" placeholder="Username">
 
   <input type="password" name="passphrase" placeholder="Passphrase">

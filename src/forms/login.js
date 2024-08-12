@@ -20,8 +20,8 @@ const loginFormAction = async (event) => {
 
   if (!response.ok) return console.log(data)
 
-  document.cookie = `accessToken=${data.accessToken}; path=/`
+  document.cookie = `accessToken=${data.accessToken}; Max-Age=600 path=/;SameSite=Strict; Secure`
   window.location.href = "/dashboard"
 }
 
-export default loginFormAction
+window.loginFormAction = loginFormAction
