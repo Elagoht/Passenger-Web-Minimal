@@ -2,6 +2,17 @@
 
 {% set title = "Login" %}
 
+{% block head %}
+<script type="module">
+  import loginFormAction from '/static/forms/login.js';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.forms[0];
+    form.addEventListener('submit', loginFormAction);
+  });
+</script>
+{% endblock head %}
+
 {% block content %}
 <img src="/static/assets/logo.png" alt="Passenger Logo" class="logo" width="128" height="128">
 
