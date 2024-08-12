@@ -1,20 +1,39 @@
 header {
-  background-color: var(--leaf-500);
-  color: var(--leaf-50);
+  background-color: var(--creamcan-100);
+  color: var(--creamcan-500);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding-right: 0.5rem;
 }
 header a {
+  text-decoration: none;
+  padding: 1rem;
+  display: inline-flex;
+  font-weight: 500;
+  font-size: 1.125rem;
   color: var(--creamcan-500);
+  transition: all 0.1s ease-in-out;
 }
 header a:hover {
-  color: var(--creamcan-700);
+  background-color: var(--creamcan-50);
+  color: var(--creamcan-400);
 }
 
 body {
   max-width: 64rem;
   margin: 0 auto;
   width: 100%;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  header {
+    background-color: var(--tuatara-950);
+    color: var(--tuatara-50);
+  }
+  header a:hover {
+    background-color: var(--creamcan-900);
+    color: var(--creamcan-50);
+  }
 }
