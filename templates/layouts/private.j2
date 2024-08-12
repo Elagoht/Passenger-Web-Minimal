@@ -2,9 +2,11 @@
 
 {% block layouthead %}
 <link rel="stylesheet" href="/static/design/private.css">
+<script src="/static/auth/logout.js"></script>
 {% endblock layouthead %}
 
 {% block layout %}
+{% include "layouts/partials/navbar.j2" %}
 
 <body>
   {% block content %}{% endblock content %}
