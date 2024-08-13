@@ -1,4 +1,5 @@
 import { postLogin } from "../services/authServices.js"
+import Cookie from "../utilities/cookie.js"
 
 const loginFormAction = async (event) => {
   event.preventDefault()
@@ -21,7 +22,7 @@ const loginFormAction = async (event) => {
   if (!response.ok)
     return document.getElementById("error-message").innerText = data.message
 
-  document.cookie = `accessToken=${data.accessToken}; Max-Age=600 path=/;SameSite=Strict; Secure`
+  Cookie.set("accessToken", data.accessToken)
   window.location.href = "/dashboard"
 
 }
