@@ -26,13 +26,13 @@ const addEntryFormAction = async (event) => {
     return window.location.href = "/login"
   }
 
-  let countdown = 5
+  let countdown = 3
   setInterval(() => {
     if (countdown === 0)
-      return window.location.href = "/"
+      return window.location.href = "/vault"
 
     document.getElementById("success-message").innerText = `Redirecting in ${countdown} seconds`
-    countdown--
+    --countdown
   }, 1000)
 }
 
