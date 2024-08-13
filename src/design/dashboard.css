@@ -1,0 +1,30 @@
+#count-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  gap: 1rem;
+}
+
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--tuatara-50);
+  color: var(--tuatara-900);
+  border-radius: 0.5rem;
+  padding: 0 1rem;
+}
+.box data {
+  font-family: monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--creamcan-500);
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .box {
+    background-color: var(--tuatara-950);
+    color: var(--tuatara-50);
+  }
+}

@@ -2,13 +2,52 @@
 
 {% set title = "Dashboard" %}
 
-{% block content %}
-<h1>
-  Welcome to Passenger Dashboard
-</h1>
+{% block head %}
+<link rel="stylesheet" href="/static/design/dashboard.css">
+{% endblock head %}
 
-<p>
-  You can see summarized information about your vaults and passphrases here.
-</p>
+{% block content %}
+<h1>Dashboard</h1>
+
+<div id="count-container">
+  <div class="box">
+    <h2>Total Count</h2>
+    <data>{{total_count}}</data>
+  </div>
+
+  <div class="box">
+    <h2>Unique Passphrases</h2>
+    <data>{{unique_passphrases}}</data>
+  </div>
+
+  <div class="box">
+    <h2>Unique platforms</h2>
+    <data>{{unique_platforms_count}}</data>
+  </div>
+
+  <div class="box">
+    <h2>Average Length</h2>
+    <data>{{ average_length }}</data>
+  </div>
+
+  <div class="box">
+    <h2>Average Length</h2>
+    <data>{{ average_length }}</data>
+  </div>
+
+  <div class="box">
+    <h2>Percentage of Common</h2>
+    <data>{{ percentage_of_common }}</data>
+  </div>
+</div>
+
+<pre>{<br/>
+&nbsp;&nbsp;most_accessed: {{most_accessed}},<br/>
+&nbsp;&nbsp;common_by_platform: {{common_by_platform}},<br/>
+&nbsp;&nbsp;most_common: {{most_common}},<br/>
+&nbsp;&nbsp;strengths: {{strengths}},<br/>
+&nbsp;&nbsp;weak_passphrases: {{weak_passphrases}},<br/>
+&nbsp;&nbsp;medium_passphrases: {{medium_passphrases}},<br/>
+&nbsp;&nbsp;strong_passphrases: {{strong_passphrases}}<br/>}</pre>
 
 {% endblock %}
