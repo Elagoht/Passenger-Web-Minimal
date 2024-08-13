@@ -41,6 +41,9 @@ body {
     background-color: var(--tuatara-950);
     color: var(--tuatara-50);
   }
+  header a {
+    color: var(--creamcan-500);
+  }
   header a:hover {
     background-color: var(--creamcan-900);
     color: var(--creamcan-50);
