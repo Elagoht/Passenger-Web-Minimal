@@ -6,3 +6,8 @@ body {
   height: 100vh;
   text-align: center;
 }
+
+#error-message {
+  color: red;
+  font-weight: 700;
+}

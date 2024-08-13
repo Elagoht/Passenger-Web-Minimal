@@ -18,10 +18,12 @@ const loginFormAction = async (event) => {
 
   const data = await response.json()
 
-  if (!response.ok) return console.log(data)
+  if (!response.ok)
+    return document.getElementById("error-message").innerText = data.message
 
   document.cookie = `accessToken=${data.accessToken}; Max-Age=600 path=/;SameSite=Strict; Secure`
   window.location.href = "/dashboard"
+
 }
 
 window.loginFormAction = loginFormAction
