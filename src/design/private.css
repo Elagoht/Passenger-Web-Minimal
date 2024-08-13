@@ -1,10 +1,17 @@
 header {
-  background-color: var(--creamcan-100);
-  color: var(--creamcan-500);
+  background-color: var(--tuatara-200);
+  color: var(--tuatara-800);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+header > div {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 0.5rem;
+  max-width: 64rem;
+  margin: 0 auto;
 }
 header a {
   text-decoration: none;
@@ -12,18 +19,20 @@ header a {
   display: inline-flex;
   font-weight: 500;
   font-size: 1.125rem;
-  color: var(--creamcan-500);
+  color: var(--tuatara-1000);
   transition: all 0.1s ease-in-out;
 }
 header a:hover {
-  background-color: var(--creamcan-50);
-  color: var(--creamcan-400);
+  background-color: var(--tuatara-50);
+  color: var(--tuatara-500);
 }
 
 body {
   max-width: 64rem;
   margin: 0 auto;
   width: 100%;
+  margin-top: 4rem;
+  padding: 1rem;
 }
 
 /* Dark Mode */
