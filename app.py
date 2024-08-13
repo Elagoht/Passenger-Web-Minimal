@@ -30,12 +30,12 @@ def register():
 @app.route("/dashboard")
 @private_page
 def dashboard():
-    headers = {
-        "Authorization": f"Bearer {request.cookies.get("accessToken", "")}"
-    }
-    data = get("http://localhost:3000/stats", headers=headers).json()
-
-    return minify_html(render_template("pages/dashboard.j2", data=data))
+    return minify_html(render_template(
+        "pages/dashboard.j2",
+        data=get("http://localhost:3000/stats", headers={
+            "Authorization": f"Bearer {request.cookies.get("accessToken", "")}"
+        }).json()
+    ))
 
 
 if __name__ == "__main__":
