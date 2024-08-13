@@ -35,22 +35,7 @@ def dashboard():
     }
     data = get("http://localhost:3000/stats", headers=headers).json()
 
-    return minify_html(render_template(
-        "pages/dashboard.j2",
-        total_count=data["totalCount"],
-        average_length=data["averageLength"],
-        unique_platforms_count=data["uniquePlatformsCount"],
-        unique_passphrases=data["uniquePassphrases"],
-        most_accessed=data["mostAccessed"],
-        common_by_platform=data["commonByPlatform"],
-        percentage_of_common=data["percentageOfCommon"],
-        most_common=data["mostCommon"],
-        strengths=data["strengths"],
-        average_strength=data["averageStrength"],
-        weak_passphrases=data["weakPassphrases"],
-        medium_passphrases=data["mediumPassphrases"],
-        strong_passphrases=data["strongPassphrases"]
-    ))
+    return minify_html(render_template("pages/dashboard.j2", data=data))
 
 
 if __name__ == "__main__":
