@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, redirect, request, url_for
 from utilities.prepare import prepare_static_files
 from utilities.minimize import minify_html
 from utilities.authorization import public_page, private_page
@@ -42,8 +42,19 @@ def dashboard():
 @private_page
 def vault():
     return minify_html(render_template(
-        "pages/vault.j2",
+        "pages/vault/index.j2",
         data=get("http://localhost:3000/fetch-all", headers={
+            "Authorization": f"Bearer {request.cookies.get("accessToken", "")}"
+        }).json()
+    ))
+
+
+@app.route("/vault/<id>", methods=["GET"])
+@private_page
+def vault_id(id):
+    return minify_html(render_template(
+        "pages/vault/uuid.j2",
+        data=get(f"http://localhost:3000/fetch/{id}", headers={
             "Authorization": f"Bearer {request.cookies.get("accessToken", "")}"
         }).json()
     ))

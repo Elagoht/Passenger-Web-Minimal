@@ -20,14 +20,20 @@ export const getEntry = (data) => fetch(`http://127.0.0.1:3000/fetch/${data}`, {
   }
 })
 
-export const putEntry = (data) => fetch("http://127.0.0.1:3000/update", {
+export const putEntry = (data) => fetch(`http://127.0.0.1:3000/update/${data.id}`, {
   method: "PUT",
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
     "Authorization": `Bearer ${Cookie.get("accessToken")}`
   },
-  body: JSON.stringify(data)
+  body: JSON.stringify({
+    platform: data.platform,
+    identity: data.identity,
+    url: data.url,
+    passphrase: data.passphrase,
+    notes: data.notes
+  })
 })
 
 export const deleteEntry = (data) => fetch(`http://127.0.0.1:3000/delete/${data}`, {

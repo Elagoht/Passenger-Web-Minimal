@@ -1,0 +1,27 @@
+{% extends "layouts/private.j2" %}
+
+{% set title = data.platform %}
+
+{% block head %}
+<script src="/static/forms/edit.js" type="module"></script>
+{% endblock head %}
+
+{% block content %}
+<form onsubmit="updateEntryFormAction(event)">
+  <input type=" text" name="platform" value="{{ data.platform }}">
+
+  <input type="text" name="identity" value="{{ data.identity }}">
+
+  <input type="text" name="url" value="{{ data.url }}">
+
+  <input type="password" name="passphrase" value="{{ data.passphrase }}">
+
+  <textarea name="notes">{{ data.notes }}</textarea>
+
+  <small id="error-message"></small>
+
+  <small id="success-message"></small>
+
+  <button type="submit" class="secondary">Re-Lock</button>
+</form>
+{% endblock content %}
