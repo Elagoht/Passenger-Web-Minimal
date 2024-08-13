@@ -15,7 +15,9 @@ form {
   width: 100%;
 }
 
-input {
+input,
+textarea,
+select {
   padding: 0.5rem;
   border-radius: 0.25rem;
   border: 1px solid var(--tuatara-200);
@@ -38,8 +40,8 @@ button.primary {
 }
 
 button.secondary {
-  background-color: var(--tuatara-50);
-  color: var(--tuatara-950);
+  background-color: var(--leaf-500);
+  color: var(--leaf-50);
 }
 
 .container-sm,
@@ -68,6 +70,16 @@ button.secondary {
   max-width: 80rem;
 }
 
+#error-message {
+  color: red;
+  font-weight: 700;
+}
+
+#success-message {
+  color: green;
+  font-weight: 700;
+}
+
 /**
  * Dark Mode
  */
@@ -77,7 +89,9 @@ button.secondary {
     color: var(--tuatara-50);
   }
 
-  input {
+  input,
+  textarea,
+  select {
     background-color: var(--tuatara-950);
     border: 1px solid var(--tuatara-900);
     color: var(--tuatara-50);
