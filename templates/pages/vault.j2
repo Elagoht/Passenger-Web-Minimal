@@ -4,10 +4,15 @@
 
 {% block head %}
 <link rel="stylesheet" href="/static/design/vault.css">
+<script src="/static/components/passphrase-entry.js" type="module"></script>
 {% endblock head %}
 
 {% block content %}
-<pre>
-  {{ data }}
-</pre>
+<main id="entry-list">
+  {% for item in data %}
+  <passphrase-entry uuid="{{ item.id }}" platform="{{ item.platform }}"
+    identity="{{ item.identity }}"></passphrase-entry>
+  {% endfor %}
+</main>
+
 {% endblock content %}
