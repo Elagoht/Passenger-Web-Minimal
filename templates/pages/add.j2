@@ -1,0 +1,28 @@
+{% extends "layouts/private.j2" %}
+
+{% set title = "Add New Entry" %}
+
+{% block head %}
+<script src="/static/forms/add.js" type="module"></script>
+{% endblock head %}
+
+{% block content %}
+<h1>Add New Entry</h1>
+
+<form onsubmit="addEntryFormAction(event)">
+  <input type="text" name="platform" placeholder="Platform">
+
+  <input type="text" name="identity" placeholder="identity">
+
+  <input type="text" name="url" placeholder="url">
+
+  <input type="password" name="passphrase" placeholder="Passphrase">
+
+  <textarea name="notes" placeholder="Notes"></textarea>
+
+  <small id="error-message"></small>
+  <small id="success-message"></small>
+
+  <button type="submit" class="secondary">Lock It Up</button>
+</form>
+{% endblock %}
