@@ -1,0 +1,13 @@
+{% extends "layouts/private.j2" %}
+
+{% set title = "Vault" %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/design/vault.css">
+{% endblock head %}
+
+{% block content %}
+<pre>
+  {{ data }}
+</pre>
+{% endblock content %}

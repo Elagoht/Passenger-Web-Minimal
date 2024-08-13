@@ -38,5 +38,16 @@ def dashboard():
     ))
 
 
+@app.route("/vault")
+@private_page
+def vault():
+    return minify_html(render_template(
+        "pages/vault.j2",
+        data=get("http://localhost:3000/fetch-all", headers={
+            "Authorization": f"Bearer {request.cookies.get("accessToken", "")}"
+        }).json()
+    ))
+
+
 if __name__ == "__main__":
     app.run(debug=True)
