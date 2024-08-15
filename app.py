@@ -1,7 +1,7 @@
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, make_response
 from utilities.prepare import prepare_static_files
 from utilities.minimize import minify_html
-from utilities.authorization import public_page, private_page
+from utilities.authorization import public_page, private_page, logout_unauthorized
 from requests import get
 
 prepare_static_files()
@@ -30,33 +30,50 @@ def register():
 @app.route("/dashboard")
 @private_page
 def dashboard():
+    fetchedData = get("http://localhost:3000/stats", headers={
+        "Authorization": f"Bearer {request.cookies.get('accessToken', '')}"
+    })
+
+    if fetchedData.status_code == 401:
+        return logout_unauthorized()
+
     return minify_html(render_template(
         "pages/dashboard.j2",
-        data=get("http://localhost:3000/stats", headers={
-            "Authorization": f"Bearer {request.cookies.get("accessToken", "")}"
-        }).json()
+        data=fetchedData.json()
     ))
 
 
 @app.route("/vault")
 @private_page
 def vault():
+    fetchedData = get("http://localhost:3000/fetch-all", headers={
+        "Authorization": f"Bearer {request.cookies.get('accessToken', '')}"
+    })
+
+    if fetchedData.status_code == 401:
+        return logout_unauthorized()
+
     return minify_html(render_template(
         "pages/vault/index.j2",
-        data=get("http://localhost:3000/fetch-all", headers={
-            "Authorization": f"Bearer {request.cookies.get("accessToken", "")}"
-        }).json()
+        data=fetchedData.json()
     ))
 
 
 @app.route("/vault/<id>", methods=["GET"])
 @private_page
 def vault_id(id):
+    fetchedData = get(f"http://localhost:3000/fetch/{id}", headers={
+        "Authorization": f"Bearer {request.cookies.get("accessToken", "")}"
+    })
+
+    if fetchedData.status_code == 401:
+        return make_response(
+            redirect('/login')
+        ).set_cookie('accessToken', '', expires=0)
+
     return minify_html(render_template(
         "pages/vault/uuid.j2",
-        data=get(f"http://localhost:3000/fetch/{id}", headers={
-            "Authorization": f"Bearer {request.cookies.get("accessToken", "")}"
-        }).json()
+        data=fetchedData.json()
     ))
 
 

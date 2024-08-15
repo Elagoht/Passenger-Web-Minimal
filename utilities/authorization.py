@@ -1,5 +1,6 @@
 from functools import wraps
-from flask import request, redirect
+from typing import Any
+from flask import request, redirect, Response, make_response
 
 
 def public_page(function):
@@ -18,3 +19,9 @@ def private_page(function):
             return redirect("/login")
         return function(*args, **kwargs)
     return decorated_function
+
+
+def logout_unauthorized() -> Response:
+    response = make_response(redirect('/login'))
+    response.set_cookie('accessToken', '', expires=0)
+    return response
