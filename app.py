@@ -83,5 +83,21 @@ def add():
     return minify_html(render_template("pages/add.j2"))
 
 
+@app.route("/detective")
+@private_page
+def detective():
+    response = get("http://localhost:3000/detect", headers={
+        "Authorization": f"Bearer {request.cookies.get('accessToken', '')}"
+    })
+
+    if response.status_code == 401:
+        return logout_unauthorized()
+
+    return minify_html(render_template(
+        "pages/detective.j2",
+        data=response.json()
+    ))
+
+
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,0 +1,19 @@
+{% extends "layouts/private.j2" %}
+
+{% set title = "Detective" %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/design/dashboard.css">
+{% endblock head %}
+
+{% block content %}
+<code>
+{
+  commonPassphrases: {{data.commonPassphrases}},
+  similarWithUsername: {{data.similarWithUsername}},
+  weakPassphrases: {{data.weakPassphrases}},
+  oldPassphrases: {{data.oldPassphrases}}
+}
+</code>
+
+{% endblock %}
