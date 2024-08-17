@@ -1,5 +1,4 @@
 from functools import wraps
-from typing import Any
 from flask import request, redirect, Response, make_response
 
 
