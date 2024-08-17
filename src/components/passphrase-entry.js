@@ -31,6 +31,12 @@ class PassphraseEntryComponent extends HTMLElement {
         h2 {
           flex-grow: 1;
           margin: 0;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
         }
 
         #edit {
@@ -44,6 +50,7 @@ class PassphraseEntryComponent extends HTMLElement {
         }
 
         button, a {
+          flex-shrink: 0;
           text-decoration: none;
           width: 3rem;
           height: 3rem;
@@ -79,14 +86,34 @@ class PassphraseEntryComponent extends HTMLElement {
     `
 
     this.shadowRoot.querySelector("#identity").addEventListener("click", () => {
-      navigator.clipboard.writeText(identity)
+      navigator.clipboard.writeText(identity).then(() => {
+        this.shadowRoot.querySelector("#identity").textContent = "✅"
+      }).catch(() => {
+        this.shadowRoot.querySelector("#identity").textContent = "❌"
+      })
+      setTimeout(() => {
+        this.shadowRoot.querySelector("#identity").textContent = "🆔"
+      }, 1000)
     })
 
     this.shadowRoot.querySelector("#passphrase").addEventListener("click", () => {
-      getEntry(uuid).then((response) => {
-        if (response.ok) response.json()
-          .then((data) => navigator.clipboard.writeText(data.passphrase))
+      getEntry(
+        uuid
+      ).then((response) => response.json()
+      ).then((data) =>
+        navigator.clipboard.writeText(
+          data.passphrase
+        ).then(() => {
+          this.shadowRoot.querySelector("#passphrase").textContent = "✅"
+        }).catch(() =>
+          this.shadowRoot.querySelector("#passphrase").textContent = "❌"
+        )
+      ).catch(() => {
+        this.shadowRoot.querySelector("#passphrase").textContent = "❌"
       })
+      setTimeout(() => {
+        this.shadowRoot.querySelector("#passphrase").textContent = "🔑"
+      }, 1000)
     })
   }
 }
