@@ -32,7 +32,6 @@ class DetectiveSheetComponent extends HTMLElement {
           border: none;
           margin: 1rem 0;
           align-self: start;
-          width: 100%;
         }
         legend {
           font-size: 1.25rem;
@@ -43,7 +42,7 @@ class DetectiveSheetComponent extends HTMLElement {
         }
         content {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(calc(50% - 1rem), 1fr));
+          grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
           gap: 0.5rem;
         }
         title-bar {
