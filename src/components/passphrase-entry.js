@@ -1,13 +1,13 @@
-import { getEntry } from "../services/dataServices.js";
+import { getEntry } from "../services/dataServices.js"
 
 class PassphraseEntryComponent extends HTMLElement {
   constructor() {
-    super();
-    this.attachShadow({ mode: "open" });
+    super()
+    this.attachShadow({ mode: "open" })
 
-    const platform = this.getAttribute("platform");
-    const identity = this.getAttribute("identity");
-    const uuid = this.getAttribute("uuid");
+    const platform = this.getAttribute("platform")
+    const identity = this.getAttribute("identity")
+    const uuid = this.getAttribute("uuid")
 
     this.shadowRoot.innerHTML = `
       <div>
@@ -76,11 +76,11 @@ class PassphraseEntryComponent extends HTMLElement {
           }
         }
       </style>
-    `;
+    `
 
     this.shadowRoot.querySelector("#identity").addEventListener("click", () => {
-      navigator.clipboard.writeText(identity);
-    });
+      navigator.clipboard.writeText(identity)
+    })
 
     this.shadowRoot.querySelector("#passphrase").addEventListener("click", () => {
       getEntry(uuid).then((response) => {
@@ -91,4 +91,4 @@ class PassphraseEntryComponent extends HTMLElement {
   }
 }
 
-customElements.define("passphrase-entry", PassphraseEntryComponent);
+customElements.define("passphrase-entry", PassphraseEntryComponent)
