@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="/static/design/detective.css" />
 <script src="/static/components/detective-sheet.js" type="module"></script>
 <script src="/static/components/passphrase-entry.js" type="module"></script>
+<script src="/static/components/newspaper-page.js" type="module"></script>
 {% endblock head %}
 
 {% block content %}
@@ -46,5 +47,14 @@
   {% endfor %}
 </detective-sheet>
 {% endif %}
+
+<newspaper-page title="000webhost" name="000webhost"
+  logo-path="https://haveibeenpwned.com/Content/Images/PwnedLogos/000webhost.png" description="In approximately March 2015, the free web hosting provider <a
+  href='http://www.troyhunt.com/2015/10/breaches-traders-plain-text-passwords.html' target='_blank'
+  rel='noopener'>000webhost suffered a major data breach</a> that exposed almost 15 million customer records. The data
+was sold and traded before 000webhost was alerted in October. The breach included names, email addresses and plain text
+passwords." domain="000webhost.com" pwn-count="14936670" breach-date="2015-03-01"
+  data-classes='["Email addresses", "IP addresses", "Names", "Passwords"]'>
+</newspaper-page>
 
 {% endblock content %}
