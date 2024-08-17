@@ -1,0 +1,20 @@
+{% extends "layouts/private.j2" %}
+
+{% set title = "Settings" %}
+
+{% block head %}
+<script src="/static/components/security-group.js" type="module"></script>
+{% endblock head %}
+
+{% block content %}
+<main>
+  <security-group title="Security" items='[
+    {"title": "Reset Master Passphrase", "link": "/settings/reset-passphrase"}
+  ]'>/security-group> </security-group>
+
+  <security-group title="DataBase" items='[
+    {"title": "Export To CSV", "link": "/settings/export"},
+    {"title": "Import From Browser/CSV" , "link": "/settings/import"}
+  ]'></security-group>
+</main>
+{% endblock content %}

@@ -22,7 +22,8 @@ class NewsPaperDataLeakArticle extends HTMLElement {
     const breachDate = this.getAttribute("breach-date") || ""
     const dataClassesString = this.getAttribute("data-classes") || "[]"
 
-    try { var dataClasses = JSON.parse(dataClassesString) }
+    let dataClasses
+    try { dataClasses = JSON.parse(dataClassesString) }
     catch { dataClasses = [] }
 
     this.shadowRoot.innerHTML = `
