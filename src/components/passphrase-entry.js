@@ -99,15 +99,17 @@ class PassphraseEntryComponent extends HTMLElement {
     this.shadowRoot.querySelector("#passphrase").addEventListener("click", () => {
       getEntry(
         uuid
-      ).then((response) => response.json()
-      ).then((data) =>
+      ).then((response) => {
+        if (!response.ok) throw new Error()
+        return response.json()
+      }).then((data) =>
         navigator.clipboard.writeText(
           data.passphrase
         ).then(() => {
           this.shadowRoot.querySelector("#passphrase").textContent = "✅"
-        }).catch(() =>
+        }).catch(() => {
           this.shadowRoot.querySelector("#passphrase").textContent = "❌"
-        )
+        })
       ).catch(() => {
         this.shadowRoot.querySelector("#passphrase").textContent = "❌"
       })
