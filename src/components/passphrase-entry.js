@@ -9,6 +9,8 @@ class PassphraseEntryComponent extends HTMLElement {
     const identity = this.getAttribute("identity")
     const uuid = this.getAttribute("uuid")
 
+    let passphrase = null
+
     this.shadowRoot.innerHTML = `
       <div>
         <h2>${platform}</h2>
@@ -96,21 +98,22 @@ class PassphraseEntryComponent extends HTMLElement {
       }, 1000)
     })
 
-    this.shadowRoot.querySelector("#passphrase").addEventListener("click", () => {
-      getEntry(
+    this.shadowRoot.querySelector("#passphrase").addEventListener("click", async () => {
+      if (!passphrase) await getEntry(
         uuid
       ).then((response) => {
         if (!response.ok) throw new Error()
         return response.json()
-      }).then((data) =>
-        navigator.clipboard.writeText(
-          data.passphrase
-        ).then(() => {
-          this.shadowRoot.querySelector("#passphrase").textContent = "✅"
-        }).catch(() => {
-          this.shadowRoot.querySelector("#passphrase").textContent = "❌"
-        })
-      ).catch(() => {
+      }).then((data) => {
+        passphrase = data.passphrase
+      }).catch(() => {
+        this.shadowRoot.querySelector("#passphrase").textContent = "❌"
+      })
+      navigator.clipboard.writeText(
+        passphrase
+      ).then(() => {
+        this.shadowRoot.querySelector("#passphrase").textContent = "✅"
+      }).catch(() => {
         this.shadowRoot.querySelector("#passphrase").textContent = "❌"
       })
       setTimeout(() => {
