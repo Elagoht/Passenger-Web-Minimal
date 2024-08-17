@@ -34,6 +34,7 @@ class DetectiveSheetComponent extends HTMLElement {
           align-self: start;
         }
         legend {
+          color: var(--creamcan-500);
           font-size: 1.25rem;
           font-weight: 500;
           padding: 0.25rem 0.5rem;
