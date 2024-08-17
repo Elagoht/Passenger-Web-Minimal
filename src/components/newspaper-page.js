@@ -17,11 +17,13 @@ class NewsPaperDataLeakArticle extends HTMLElement {
     const title = this.getAttribute("title") || "News"
     const name = this.getAttribute("name") || ""
     const logoPath = this.getAttribute("logo-path") || ""
-    const description = this.getAttribute("description") || ""
     const domain = this.getAttribute("domain") || ""
     const pwnCount = this.getAttribute("pwn-count") || ""
     const breachDate = this.getAttribute("breach-date") || ""
-    const dataClasses = JSON.parse(this.getAttribute("data-classes") || "[]")
+    const dataClassesString = this.getAttribute("data-classes") || "[]"
+
+    try { var dataClasses = JSON.parse(dataClassesString) }
+    catch { dataClasses = [] }
 
     this.shadowRoot.innerHTML = `
       <article>
@@ -38,17 +40,17 @@ class NewsPaperDataLeakArticle extends HTMLElement {
           />
 
           <p class="${this.isExpanded ? "expanded-p" : "collapsed-p"}">
-            ${description}
+            <slot></slot>
           </p>
 
           <button id="expander">
-            ${this.isExpanded ? "Show less" : "Show more"}
+            ${this.isExpanded ? "Show less 🔼" : "Show more 🔽"}
           </button>
 
           <div id="clear"></div>
         </div>
 
-        <dl style="display: flex; flex-wrap: wrap; margin: 0;">
+        <dl style="display: flex; flex-wrap: wrap; margin: 0; margin-top: auto;">
           ${[{
         key: "Domain",
         value: domain.startsWith("http")
@@ -75,6 +77,11 @@ class NewsPaperDataLeakArticle extends HTMLElement {
       </article>
 
       <style>
+      :host {
+        height: 100%;
+        width: 100%;
+        display: flex;
+      }
       article {
         padding: 1rem;
         background: var(--tuatara-50);
@@ -87,7 +94,7 @@ class NewsPaperDataLeakArticle extends HTMLElement {
         color: var(--creamcan-500) !important;
         margin-top: 0;
       }
-      a { color: var(--leaf-500); }
+      a { color: var(--leaf-500) !important; }
       img {
         float: left;
         margin-right: 1rem;
@@ -109,6 +116,7 @@ class NewsPaperDataLeakArticle extends HTMLElement {
       }
       #expander {
         background: none;
+        filter: grayscale(100%);
         border: none;
         color: var(--tuatara-500);
         display: flex;

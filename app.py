@@ -93,9 +93,12 @@ def detective():
     if response.status_code == 401:
         return logout_unauthorized()
 
+    newsResponse = get("https://passenger-landing.vercel.app/api/news")
+
     return minify_html(render_template(
         "pages/detective.j2",
-        data=response.json()
+        data=response.json(),
+        news=newsResponse.json()
     ))
 
 

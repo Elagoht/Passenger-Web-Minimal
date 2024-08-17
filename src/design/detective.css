@@ -7,6 +7,12 @@
   border-radius: 0.25rem;
 }
 
+#news-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+  gap: 1rem;
+}
+
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
   .entry-group {
