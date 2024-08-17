@@ -3,7 +3,7 @@
 {% set title = "Register" %}
 
 {% block head %}
-<script src="/static/forms/register.js" defer></script>
+<script src="/static/forms/register.js" type="module"></script>
 {% endblock head %}
 
 {% block content %}
@@ -11,9 +11,12 @@
 
 <h1>Create Your Vault</h1>
 
-<form class="container-sm">
-  <input type="text" name="username" placeholder="Username">
+<form class="container-sm" onsubmit="registerFormAction(event)">
+  <input type=" text" name="username" placeholder="Username">
+
   <input type="password" name="passphrase" placeholder="Passphrase">
+
+  <small id="error-message"></small>
 
   <button type="submit" class="primary">Create Vault</button>
 </form>
