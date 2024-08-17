@@ -3,17 +3,48 @@
 {% set title = "Detective" %}
 
 {% block head %}
-<link rel="stylesheet" href="/static/design/dashboard.css">
+<link rel="stylesheet" href="/static/design/detective.css" />
+<script src="/static/components/detective-sheet.js" type="module"></script>
+<script src="/static/components/passphrase-entry.js" type="module"></script>
 {% endblock head %}
 
 {% block content %}
-<code>
-{
-  commonPassphrases: {{data.commonPassphrases}},
-  similarWithUsername: {{data.similarWithUsername}},
-  weakPassphrases: {{data.weakPassphrases}},
-  oldPassphrases: {{data.oldPassphrases}}
-}
-</code>
 
-{% endblock %}
+{% if data.commonPassphrases|length != 0 %}
+<detective-sheet title="Common Passphrases" description="These passphrases are used on multiple registries.">
+  {% for items in data.commonPassphrases %}
+  <div class="entry-group">
+    {% for item in items %}
+    <passphrase-entry platform=" {{item.platform}}" identity="{{item.identity}}" uuid="{{item.id}}"></passphrase-entry>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</detective-sheet>
+{% endif %}
+
+{% if data.similarWithUsername|length != 0 %}
+<detective-sheet title="Similar with Username"
+  description="These passphrases contains or are similar with the username.">
+  {% for item in data.similarWithUsername %}
+  <passphrase-entry platform="{{item.platform}}" identity="{{item.identity}}" uuid="{{item.id}}"></passphrase-entry>
+  {% endfor %}
+</detective-sheet>
+{% endif %}
+
+{% if data.similarWithEmail|length != 0 %}
+<detective-sheet title="Weak Passphrases" description="These passphrases are weak and can be easily guessed.">
+  {% for item in data.weakPassphrases %}
+  <passphrase-entry platform="{{item.platform}}" identity="{{item.identity}}" uuid="{{item.id}}"></passphrase-entry>
+  {% endfor %}
+</detective-sheet>
+{% endif %}
+
+{% if data.oldPassphrases|length != 0 %}
+<detective-sheet title="Old Passphrases" description="These passphrases are old and should not be used anymore.">
+  {% for item in data.oldPassphrases %}
+  <passphrase-entry platform="{{item.platform}}" identity="{{item.identity}}" uuid="{{item.id}}"></passphrase-entry>
+  {% endfor %}
+</detective-sheet>
+{% endif %}
+
+{% endblock content %}

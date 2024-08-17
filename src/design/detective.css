@@ -1,0 +1,15 @@
+.entry-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background-color: var(--tuatara-200);
+  border-radius: 0.25rem;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .entry-group {
+    background-color: var(--tuatara-800);
+  }
+}
