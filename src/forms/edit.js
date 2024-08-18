@@ -13,9 +13,7 @@ const updateEntryFormAction = async (event) => {
   const passphrase = form.get("passphrase")
   const notes = form.get("notes")
 
-  const response = await putEntry({
-    id, platform, identity, url, passphrase, notes
-  })
+  const response = await putEntry({ id, platform, identity, url, passphrase, notes })
 
   const data = await response.json()
 

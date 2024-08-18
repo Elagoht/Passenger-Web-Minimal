@@ -12,10 +12,7 @@ const loginFormAction = async (event) => {
   if (typeof username !== 'string' || typeof passphrase !== 'string')
     return alert("Invalid input")
 
-  const response = await postLogin({
-    username: username,
-    passphrase: passphrase
-  })
+  const response = await postLogin({ username, passphrase })
 
   const data = await response.json()
 

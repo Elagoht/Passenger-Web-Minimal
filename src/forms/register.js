@@ -11,10 +11,7 @@ const registerFormAction = async (event) => {
   if (typeof username !== "string" || typeof passphrase !== "string")
     return alert("Invalid input")
 
-  const response = await postRegister({
-    username: username,
-    passphrase: passphrase
-  })
+  const response = await postRegister({ username, passphrase })
 
   const data = await response.json()
 
