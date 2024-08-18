@@ -1,0 +1,27 @@
+{% extends "layouts/private.j2" %}
+
+{% set title = "Export Data" %}
+
+{% block head %}
+<script src="/static/forms/export.js" type="module"></script>
+{% endblock head %}
+
+{% block content %}
+<form onsubmit="exportFormAction(event)">
+  <label>
+    <input type="radio" name="type" value="bare" checked> Bare
+
+    <p style="color: red;">Human-readable, so do not share this file with others.</p>
+  </label>
+
+  <label>
+    <input type="radio" name="type" value="encrypted"> Encrypted
+
+    <p style="color: orange;">Encrypted each line with Base64, humans cannot read, but computers can.</p>
+  </label>
+
+  <small id="error-message"></small>
+
+  <button type="submit">Export</button>
+</form>
+{% endblock content %}

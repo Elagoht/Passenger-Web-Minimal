@@ -114,5 +114,17 @@ def reset_passphrase():
     return minify_html(render_template("pages/settings/reset-passphrase.j2"))
 
 
+@app.route("/settings/export")
+@private_page
+def export_to_csv():
+    return minify_html(render_template("pages/settings/export.j2"))
+
+
+@app.route("/settings/import")
+@private_page
+def import_from_browser():
+    return minify_html(render_template("pages/settings/import.j2"))
+
+
 if __name__ == "__main__":
     app.run(debug=True)

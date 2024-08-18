@@ -44,3 +44,12 @@ export const deleteEntry = (data) => fetch(`http://127.0.0.1:3000/delete/${data}
     "Authorization": `Bearer ${Cookie.get("accessToken")}`
   }
 })
+
+export const exportToCSV = (browser) => fetch(`http://127.0.0.1:3000/export?browser=${browser}`, {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    "Authorization": `Bearer ${Cookie.get("accessToken")}`
+  }
+})
