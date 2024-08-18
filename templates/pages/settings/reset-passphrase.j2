@@ -1,0 +1,23 @@
+{% extends "layouts/private.j2" %}
+
+{% set title = "Settings" %}
+
+{% block head %}
+<script src="/static/forms/reset.js" type="module"></script>
+{% endblock head %}
+
+{% block content %}
+<h1>Reset Your Master Passhrase</h1>
+
+<form onsubmit="resetFormAction(event)">
+  <input name="oldPassphrase" type="password" placeholder="Old Passphrase" required>
+
+  <input name="newPassphrase" type="password" placeholder="New Passphrase" required>
+
+  <small id="error-message"></small>
+
+  <small id="success-message"></small>
+
+  <button type="submit" class="primary">Reset</button>
+</form>
+{% endblock content %}
