@@ -93,7 +93,7 @@ def detective():
     if response.status_code == 401:
         return logout_unauthorized()
 
-    newsResponse = get("https://passenger-landing.vercel.app/api/news")
+    newsResponse = get("https://passenger-landing.vercel.app/api/breaches")
 
     return minify_html(render_template(
         "pages/detective.j2",
