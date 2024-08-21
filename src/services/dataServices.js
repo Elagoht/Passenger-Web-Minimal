@@ -53,3 +53,12 @@ export const exportToCSV = (browser) => fetch(`http://127.0.0.1:3000/export?brow
     "Authorization": `Bearer ${Cookie.get("accessToken")}`
   }
 })
+
+export const importFromCSV = (data) => fetch("http://127.0.0.1:3000/import", {
+  method: "POST",
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+    "Authorization": `Bearer ${Cookie.get("accessToken")}`
+  },
+  body: data
+})
