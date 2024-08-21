@@ -1,0 +1,43 @@
+{% extends "layouts/private.j2" %}
+
+{% set title = "Import Data" %}
+
+{% block head %}
+<script src="/static/forms/import.js" type="module"></script>
+{% endblock head %}
+
+{% block content %}
+<h1>Import Your Data</h1>
+
+<p>Choose the browser you want to import from:</p>
+
+<form onsubmit="importFormAction(event)">
+  <label>
+    <input type="radio" name="browser" value="chromium" checked> Chromium
+
+    <p style="color: orange;">Google Chrome, Microsoft Edge, Opera, Brave, Vivaldi, etc.</p>
+  </label>
+
+  <label>
+    <input type="radio" name="browser" value="firefox"> Firefox
+
+    <p style="color: orange;">Mozilla Firefox, Waterfox, IceCat, Floorp, LibreWolf, etc.</p>
+  </label>
+
+  <label>
+    <input type="radio" name="browser" value="safari"> Safari
+
+    <p style="color: orange;">From Mac OS Passwords</p>
+  </label>
+
+  <label>
+    <p>Choose the file you want to import.</p>
+    <input type="file" name="file" accept=".csv" required>
+
+  </label>
+
+  <small id="error-message"></small>
+
+  <button type="submit">Import</button>
+</form>
+{% endblock content %}
