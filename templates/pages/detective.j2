@@ -7,6 +7,7 @@
 <script src="/static/components/detective-sheet.js" type="module"></script>
 <script src="/static/components/passphrase-entry.js" type="module"></script>
 <script src="/static/components/newspaper-page.js" type="module"></script>
+<script src="/static/components/needs-content.js" type="module"></script>
 {% endblock head %}
 
 {% block content %}
@@ -48,13 +49,6 @@
 </detective-sheet>
 {% endif %}
 
-<div id="news-list">
-  {% for new in news.data %}
-  <newspaper-page title="{{new.Title}}" name="{{new.Name}}" logo-path="{{new.LogoPath}}" domain="{{new.Domain}}"
-    pwn-count="{{new.PwnCount}}" breach-date="{{new.BreachDate}}" data-classes="{{new.DataClasses}}">
-    {{ new.Description }}
-  </newspaper-page>
-  {% endfor %}
-</div>
+<needs-content from="http://127.0.0.1:5000/_content/news"></needs-content>
 
 {% endblock content %}

@@ -1,0 +1,8 @@
+<div id="news-list">
+  {% for new in news.data %}
+  <newspaper-page title="{{new.Title}}" name="{{new.Name}}" logo-path="{{new.LogoPath}}" domain="{{new.Domain}}"
+    pwn-count="{{new.PwnCount}}" breach-date="{{new.BreachDate}}" data-classes="{{new.DataClasses}}">
+    {{ new.Description }}
+  </newspaper-page>
+  {% endfor %}
+</div>

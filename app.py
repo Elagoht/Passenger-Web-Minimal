@@ -102,6 +102,13 @@ def detective():
     ))
 
 
+@app.route("/_content/news")
+@private_page
+def news():
+    response = get("https://passenger-landing.vercel.app/api/breaches")
+    return render_template("partials/news.j2", news=response.json())
+
+
 @app.route("/settings")
 @private_page
 def settings():
