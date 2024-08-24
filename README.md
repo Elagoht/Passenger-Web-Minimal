@@ -3,8 +3,8 @@
 
 # Passenger Web Minimal
 
-![Node.js](https://img.shields.io/badge/Flask-Server-red?logo=flask&logoColor=red)
-![Nest.js](https://img.shields.io/badge/Web-Components-blue?logo=webcomponentsdotorg)
+![Flask](https://img.shields.io/badge/Flask-Server-red?logo=flask&logoColor=red)
+![Web Components](https://img.shields.io/badge/Web-Components-blue?logo=webcomponentsdotorg)
 ![Passenger](https://img.shields.io/badge/Core_Version-0.3.0_beta.1-F2970D)
 ![GitHub Repo stars](https://img.shields.io/github/stars/Elagoht/Passenger-Web-Minimal?style=flat)
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/Elagoht/Passenger-Web-Minimal)
